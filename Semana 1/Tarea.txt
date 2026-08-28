@@ -1,1 +1,2 @@
 Dia 1: En el primer día el profesor dijo que quien se quería ir con 7 o 8 
+Dia 2: Hicimos investigación de la definición de perceptrón, una grafica y un ejemplo
