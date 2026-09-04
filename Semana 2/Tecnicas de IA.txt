@@ -1,1 +1,2 @@
 Elegimos un Anteproyecto, realizamos el planteamiento de problema con el proyecto que elegimos, después hicimos un debate con un compañero en donde íbamos a decir tres puntos débiles de nuestro proyecto.
+Resolvimos una función de ackley con 5 dimensiones en la clase.
