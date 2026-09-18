@@ -1,1 +1,3 @@
-hi
+Realizamos el perceptron de 7 digitos con grafo, operaciones, realización de la función de activación, explicación escrita de la resolución del perceptron.
+Realizamos 10 sprints de 12 semanas en la que pusimos que vamos hacer en casa semana.
+Agregamos un codigo prueba del proye. 
