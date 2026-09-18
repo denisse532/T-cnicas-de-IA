@@ -1,0 +1,1 @@
+Realizamos el perceptron de 7 digitos con grafo, operaciones, realización de la función de activación, explicación escrita de la resolución del perceptron 
