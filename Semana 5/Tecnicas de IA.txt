@@ -1,0 +1,1 @@
+El día lunes hicimos un perceptrón y otro de tarea pero con la función de activación lineal y relu, en la clase nos explico como hacer la activacion de sigmoide.
