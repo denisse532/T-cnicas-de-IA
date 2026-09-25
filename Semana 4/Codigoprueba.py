@@ -1,84 +1,66 @@
-import tkinter as tk
-from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
+import cv2
+import os
+from datetime import datetime
 
+# Crear carpeta para guardar las capturas
+carpeta = "capturas"
 
-def seleccionar_imagen():
-    ruta = filedialog.askopenfilename(
-        title="Selecciona una imagen de una hoja",
-        filetypes=[
-            ("Imágenes", "*.jpg *.jpeg *.png"),
-            ("Todos los archivos", "*.*")
-        ]
-    )
+if not os.path.exists(carpeta):
+    os.makedirs(carpeta)
 
-    if ruta:
-        try:
-            imagen = Image.open(ruta)
+# Abrir la cámara
+camara = cv2.VideoCapture(0)
 
-            # Redimensionar para mostrarla en la ventana
-            imagen.thumbnail((500, 400))
+if not camara.isOpened():
+    print("Error: No se pudo abrir la cámara.")
+    exit()
 
-            imagen_tk = ImageTk.PhotoImage(imagen)
+print("======================================")
+print("       VISION SOLIDARIA - MPV 1")
+print("======================================")
+print()
+print("ESPACIO = Capturar imagen")
+print("Q       = Salir")
+print()
 
-            etiqueta_imagen.config(image=imagen_tk)
-            etiqueta_imagen.image = imagen_tk
+while True:
 
-            resultado.config(
-                text="Imagen cargada correctamente.\n"
-                     "Lista para el análisis de IA."
-            )
+    # Leer imagen de la cámara
+    ret, frame = camara.read()
 
-        except Exception as error:
-            messagebox.showerror(
-                "Error",
-                f"No se pudo abrir la imagen:\n{error}"
-            )
+    if not ret:
+        print("Error: No se pudo recibir imagen de la cámara.")
+        break
 
+    # Mostrar el video
+    cv2.imshow("Vision Solidaria - Camara", frame)
 
-# Crear ventana
-ventana = tk.Tk()
-ventana.title("Detector de Plantas Enfermas - IA")
-ventana.geometry("650x600")
+    # Esperar una tecla
+    tecla = cv2.waitKey(1) & 0xFF
 
-# Título
-titulo = tk.Label(
-    ventana,
-    text="Detector de Plantas Enfermas mediante IA",
-    font=("Arial", 18, "bold")
-)
-titulo.pack(pady=20)
+    # Capturar imagen con ESPACIO
+    if tecla == ord(' '):
 
-# Instrucciones
-instruccion = tk.Label(
-    ventana,
-    text="Selecciona una fotografía de una hoja",
-    font=("Arial", 12)
-)
-instruccion.pack(pady=10)
+        fecha = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# Botón
-boton = tk.Button(
-    ventana,
-    text="Seleccionar imagen",
-    command=seleccionar_imagen,
-    font=("Arial", 12),
-    padx=20,
-    pady=10
-)
-boton.pack(pady=10)
+        nombre_archivo = os.path.join(
+            carpeta,
+            f"captura_{fecha}.jpg"
+        )
 
-# Espacio para la imagen
-etiqueta_imagen = tk.Label(ventana)
-etiqueta_imagen.pack(pady=20)
+        cv2.imwrite(nombre_archivo, frame)
 
-# Resultado
-resultado = tk.Label(
-    ventana,
-    text="Esperando una imagen...",
-    font=("Arial", 12)
-)
-resultado.pack(pady=10)
+        print(f"Imagen guardada: {nombre_archivo}")
 
-# Ejecutar aplicación
-ventana.mainloop()
+    # Salir con Q
+    elif tecla == ord('q'):
+
+        break
+
+# Liberar la cámara
+camara.release()
+
+# Cerrar ventanas
+cv2.destroyAllWindows()
+
+print("Programa finalizado.")
