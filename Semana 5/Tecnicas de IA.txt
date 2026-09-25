@@ -1,1 +1,2 @@
 El día lunes hicimos un perceptrón y otro de tarea pero con la función de activación lineal y relu, en la clase nos explico como hacer la activacion de sigmoide.
+El día martes nos reunimos en equipo para ponernos de acuerdo sobre hacer el sprint 3 que es hacer un codigo de deteccion de objetos, que pueda identificar simultáneamente varios objetos.
