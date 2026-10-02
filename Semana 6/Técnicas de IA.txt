@@ -1,1 +1,2 @@
-el día martes realizamos varios tensores que fueron el tensor 1D, el 2D, el 3D y el 4D
+el día martes realizamos varios tensores que fueron el tensor 1D, el 2D, el 3D y el 4D.
+En este día nos puso 5 actividades para realizar en Google colab para entregar el día viernes, las actividades consta de hacer 1 tensor 3D con matrices, cada actividad es hacer diferente unas son de hacer números y que se muestren en base a las matrices.
